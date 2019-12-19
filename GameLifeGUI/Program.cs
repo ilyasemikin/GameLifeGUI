@@ -11,12 +11,12 @@ namespace GameLifeGUI
         [STAThread]
         static void Main()
         {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
             MainForm form = new MainForm()
             {
                 GameLatency = 100
             };
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(form);
         }
     }
