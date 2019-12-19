@@ -31,11 +31,14 @@
             this.picGame = new System.Windows.Forms.PictureBox();
             this.btnNextGen = new System.Windows.Forms.Button();
             this.groupGameRun = new System.Windows.Forms.GroupBox();
+            this.btnStop = new System.Windows.Forms.Button();
             this.btnRun = new System.Windows.Forms.Button();
             this.backworkerRun = new System.ComponentModel.BackgroundWorker();
-            this.btnStop = new System.Windows.Forms.Button();
+            this.groupFigure = new System.Windows.Forms.GroupBox();
+            this.btnAddFigure = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picGame)).BeginInit();
             this.groupGameRun.SuspendLayout();
+            this.groupFigure.SuspendLayout();
             this.SuspendLayout();
             // 
             // picGame
@@ -72,6 +75,16 @@
             this.groupGameRun.TabStop = false;
             this.groupGameRun.Text = "Game";
             // 
+            // btnStop
+            // 
+            this.btnStop.Location = new System.Drawing.Point(89, 49);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(77, 23);
+            this.btnStop.TabIndex = 3;
+            this.btnStop.Text = "Stop";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
             // btnRun
             // 
             this.btnRun.Location = new System.Drawing.Point(6, 49);
@@ -86,27 +99,40 @@
             // 
             this.backworkerRun.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backworkerRun_DoWork);
             // 
-            // btnStop
+            // groupFigure
             // 
-            this.btnStop.Location = new System.Drawing.Point(89, 49);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(77, 23);
-            this.btnStop.TabIndex = 3;
-            this.btnStop.Text = "Stop";
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            this.groupFigure.Controls.Add(this.btnAddFigure);
+            this.groupFigure.Location = new System.Drawing.Point(192, 12);
+            this.groupFigure.Name = "groupFigure";
+            this.groupFigure.Size = new System.Drawing.Size(88, 81);
+            this.groupFigure.TabIndex = 3;
+            this.groupFigure.TabStop = false;
+            this.groupFigure.Text = "Figures";
+            // 
+            // btnAddFigure
+            // 
+            this.btnAddFigure.Location = new System.Drawing.Point(6, 19);
+            this.btnAddFigure.Name = "btnAddFigure";
+            this.btnAddFigure.Size = new System.Drawing.Size(77, 23);
+            this.btnAddFigure.TabIndex = 4;
+            this.btnAddFigure.Text = "Add";
+            this.btnAddFigure.UseVisualStyleBackColor = true;
+            this.btnAddFigure.Click += new System.EventHandler(this.btnAddFigure_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 360);
+            this.Controls.Add(this.groupFigure);
             this.Controls.Add(this.groupGameRun);
             this.Controls.Add(this.picGame);
+            this.MinimumSize = new System.Drawing.Size(450, 400);
             this.Name = "MainForm";
             this.Text = "MainForm";
             ((System.ComponentModel.ISupportInitialize)(this.picGame)).EndInit();
             this.groupGameRun.ResumeLayout(false);
+            this.groupFigure.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -119,5 +145,7 @@
         private System.Windows.Forms.Button btnRun;
         private System.ComponentModel.BackgroundWorker backworkerRun;
         private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.GroupBox groupFigure;
+        private System.Windows.Forms.Button btnAddFigure;
     }
 }

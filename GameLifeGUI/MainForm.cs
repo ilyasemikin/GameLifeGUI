@@ -92,6 +92,25 @@ namespace GameLifeGUI
             }
         }
 
+        private void btnAddFigure_Click(object sender, EventArgs e)
+        {
+            AddFigureForm form = new AddFigureForm()
+            {
+                FieldWidth = field.Width,
+                FieldHeight = field.Height,
+            };
+            bool isGameRun = backworkerRun.IsBusy;
+            if (isGameRun)
+                backworkerRun.CancelAsync();
+            
+            if (form.ShowDialog(this) == DialogResult.OK)
+                foreach (var cell in form.Result)
+                    field.AddLivingCell(cell);
+            
+            if (isGameRun)
+                backworkerRun.RunWorkerAsync();
+            form.Dispose();
+        }
         private void DrawCell(Graphics gr, CellPoint cell)
         {
             int x, y;
