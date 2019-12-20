@@ -32,13 +32,13 @@
             this.listFigures = new System.Windows.Forms.ListBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtInputX = new System.Windows.Forms.TextBox();
-            this.txtInputY = new System.Windows.Forms.TextBox();
-            this.labelX = new System.Windows.Forms.Label();
+            this.groupAdd = new System.Windows.Forms.GroupBox();
             this.labelY = new System.Windows.Forms.Label();
+            this.labelX = new System.Windows.Forms.Label();
+            this.txtInputY = new System.Windows.Forms.TextBox();
+            this.txtInputX = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picSampleFigure)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.groupAdd.SuspendLayout();
             this.SuspendLayout();
             // 
             // picSampleFigure
@@ -79,42 +79,19 @@
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // groupAdd
             // 
-            this.groupBox1.Controls.Add(this.labelY);
-            this.groupBox1.Controls.Add(this.labelX);
-            this.groupBox1.Controls.Add(this.btnAdd);
-            this.groupBox1.Controls.Add(this.txtInputY);
-            this.groupBox1.Controls.Add(this.txtInputX);
-            this.groupBox1.Location = new System.Drawing.Point(13, 262);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(130, 78);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Add figure";
-            // 
-            // txtInputX
-            // 
-            this.txtInputX.Location = new System.Drawing.Point(27, 20);
-            this.txtInputX.Name = "txtInputX";
-            this.txtInputX.Size = new System.Drawing.Size(34, 20);
-            this.txtInputX.TabIndex = 0;
-            // 
-            // txtInputY
-            // 
-            this.txtInputY.Location = new System.Drawing.Point(87, 20);
-            this.txtInputY.Name = "txtInputY";
-            this.txtInputY.Size = new System.Drawing.Size(34, 20);
-            this.txtInputY.TabIndex = 1;
-            // 
-            // labelX
-            // 
-            this.labelX.AutoSize = true;
-            this.labelX.Location = new System.Drawing.Point(6, 23);
-            this.labelX.Name = "labelX";
-            this.labelX.Size = new System.Drawing.Size(15, 15);
-            this.labelX.TabIndex = 5;
-            this.labelX.Text = "X";
+            this.groupAdd.Controls.Add(this.labelY);
+            this.groupAdd.Controls.Add(this.labelX);
+            this.groupAdd.Controls.Add(this.btnAdd);
+            this.groupAdd.Controls.Add(this.txtInputY);
+            this.groupAdd.Controls.Add(this.txtInputX);
+            this.groupAdd.Location = new System.Drawing.Point(13, 262);
+            this.groupAdd.Name = "groupAdd";
+            this.groupAdd.Size = new System.Drawing.Size(130, 78);
+            this.groupAdd.TabIndex = 4;
+            this.groupAdd.TabStop = false;
+            this.groupAdd.Text = "Add figure";
             // 
             // labelY
             // 
@@ -125,12 +102,37 @@
             this.labelY.TabIndex = 6;
             this.labelY.Text = "Y";
             // 
+            // labelX
+            // 
+            this.labelX.AutoSize = true;
+            this.labelX.Location = new System.Drawing.Point(6, 23);
+            this.labelX.Name = "labelX";
+            this.labelX.Size = new System.Drawing.Size(15, 15);
+            this.labelX.TabIndex = 5;
+            this.labelX.Text = "X";
+            // 
+            // txtInputY
+            // 
+            this.txtInputY.Location = new System.Drawing.Point(87, 20);
+            this.txtInputY.Name = "txtInputY";
+            this.txtInputY.Size = new System.Drawing.Size(34, 20);
+            this.txtInputY.TabIndex = 1;
+            this.txtInputY.TextChanged += new System.EventHandler(this.txtInputXY_TextChanged);
+            // 
+            // txtInputX
+            // 
+            this.txtInputX.Location = new System.Drawing.Point(27, 20);
+            this.txtInputX.Name = "txtInputX";
+            this.txtInputX.Size = new System.Drawing.Size(34, 20);
+            this.txtInputX.TabIndex = 0;
+            this.txtInputX.TextChanged += new System.EventHandler(this.txtInputXY_TextChanged);
+            // 
             // AddFigureForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 350);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupAdd);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.listFigures);
             this.Controls.Add(this.picSampleFigure);
@@ -140,8 +142,8 @@
             this.Name = "AddFigureForm";
             this.Text = "AddFigureForm";
             ((System.ComponentModel.ISupportInitialize)(this.picSampleFigure)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupAdd.ResumeLayout(false);
+            this.groupAdd.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -152,7 +154,7 @@
         private System.Windows.Forms.ListBox listFigures;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupAdd;
         private System.Windows.Forms.Label labelY;
         private System.Windows.Forms.Label labelX;
         private System.Windows.Forms.TextBox txtInputY;

@@ -32,11 +32,17 @@ namespace GameLifeGUI
             };
             InitializeComponent();
             backworkerRun.WorkerSupportsCancellation = true;
+            btnNextGen.Enabled = true;
+            btnRun.Enabled = true;
+            btnStop.Enabled = false;
         }
         private int cellWidth, cellHeight;
         private int xMin, yMin;
-        private void btnNextGen_Click(object sender, EventArgs e) => DisplayGeneration();
-
+        private void btnNextGen_Click(object sender, EventArgs e)
+        {
+            DisplayGeneration();
+            field.CreateNextGeneration();
+        }
         public void DisplayGeneration()
         {
             int width, height;
@@ -53,7 +59,6 @@ namespace GameLifeGUI
             yMin = (picGame.ClientSize.Height - height * cellHeight) / 2;
 
             DrawGeneration();
-            field.CreateNextGeneration();
         }
 
         private void btnRun_Click(object sender, EventArgs e)
@@ -62,6 +67,7 @@ namespace GameLifeGUI
             {
                 btnNextGen.Enabled = false;
                 btnRun.Enabled = false;
+                btnStop.Enabled = true;
                 backworkerRun.RunWorkerAsync();
             }
         }
@@ -79,6 +85,7 @@ namespace GameLifeGUI
                 }
                 DisplayGeneration();
                 Thread.Sleep(GameLatency);
+                field.CreateNextGeneration();
             }
         }
 
@@ -88,6 +95,7 @@ namespace GameLifeGUI
             {
                 btnNextGen.Enabled = true;
                 btnRun.Enabled = true;
+                btnStop.Enabled = false;
                 backworkerRun.CancelAsync();
             }
         }
@@ -102,15 +110,27 @@ namespace GameLifeGUI
             bool isGameRun = backworkerRun.IsBusy;
             if (isGameRun)
                 backworkerRun.CancelAsync();
-            
+
             if (form.ShowDialog(this) == DialogResult.OK)
+            {
                 foreach (var cell in form.Result)
                     field.AddLivingCell(cell);
+                DisplayGeneration();
+            }
             
             if (isGameRun)
                 backworkerRun.RunWorkerAsync();
             form.Dispose();
         }
+
+        private void btnFieldClear_Click(object sender, EventArgs e)
+        {
+            if (backworkerRun.IsBusy)
+                btnStop.PerformClick();
+            field.ClearField();
+            DrawGeneration();
+        }
+
         private void DrawCell(Graphics gr, CellPoint cell)
         {
             int x, y;

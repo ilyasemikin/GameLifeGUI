@@ -36,9 +36,12 @@
             this.backworkerRun = new System.ComponentModel.BackgroundWorker();
             this.groupFigure = new System.Windows.Forms.GroupBox();
             this.btnAddFigure = new System.Windows.Forms.Button();
+            this.groupField = new System.Windows.Forms.GroupBox();
+            this.btnFieldClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picGame)).BeginInit();
             this.groupGameRun.SuspendLayout();
             this.groupFigure.SuspendLayout();
+            this.groupField.SuspendLayout();
             this.SuspendLayout();
             // 
             // picGame
@@ -49,7 +52,7 @@
             this.picGame.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.picGame.Location = new System.Drawing.Point(12, 99);
             this.picGame.Name = "picGame";
-            this.picGame.Size = new System.Drawing.Size(410, 249);
+            this.picGame.Size = new System.Drawing.Size(460, 299);
             this.picGame.TabIndex = 0;
             this.picGame.TabStop = false;
             // 
@@ -102,7 +105,7 @@
             // groupFigure
             // 
             this.groupFigure.Controls.Add(this.btnAddFigure);
-            this.groupFigure.Location = new System.Drawing.Point(192, 12);
+            this.groupFigure.Location = new System.Drawing.Point(284, 12);
             this.groupFigure.Name = "groupFigure";
             this.groupFigure.Size = new System.Drawing.Size(88, 81);
             this.groupFigure.TabIndex = 3;
@@ -119,20 +122,42 @@
             this.btnAddFigure.UseVisualStyleBackColor = true;
             this.btnAddFigure.Click += new System.EventHandler(this.btnAddFigure_Click);
             // 
+            // groupField
+            // 
+            this.groupField.Controls.Add(this.btnFieldClear);
+            this.groupField.Location = new System.Drawing.Point(191, 12);
+            this.groupField.Name = "groupField";
+            this.groupField.Size = new System.Drawing.Size(87, 81);
+            this.groupField.TabIndex = 4;
+            this.groupField.TabStop = false;
+            this.groupField.Text = "Field";
+            // 
+            // btnFieldClear
+            // 
+            this.btnFieldClear.Location = new System.Drawing.Point(6, 19);
+            this.btnFieldClear.Name = "btnFieldClear";
+            this.btnFieldClear.Size = new System.Drawing.Size(76, 23);
+            this.btnFieldClear.TabIndex = 5;
+            this.btnFieldClear.Text = "Clear";
+            this.btnFieldClear.UseVisualStyleBackColor = true;
+            this.btnFieldClear.Click += new System.EventHandler(this.btnFieldClear_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 360);
+            this.ClientSize = new System.Drawing.Size(484, 410);
+            this.Controls.Add(this.groupField);
             this.Controls.Add(this.groupFigure);
             this.Controls.Add(this.groupGameRun);
             this.Controls.Add(this.picGame);
-            this.MinimumSize = new System.Drawing.Size(450, 400);
+            this.MinimumSize = new System.Drawing.Size(500, 450);
             this.Name = "MainForm";
             this.Text = "MainForm";
             ((System.ComponentModel.ISupportInitialize)(this.picGame)).EndInit();
             this.groupGameRun.ResumeLayout(false);
             this.groupFigure.ResumeLayout(false);
+            this.groupField.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -147,5 +172,7 @@
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.GroupBox groupFigure;
         private System.Windows.Forms.Button btnAddFigure;
+        private System.Windows.Forms.GroupBox groupField;
+        private System.Windows.Forms.Button btnFieldClear;
     }
 }

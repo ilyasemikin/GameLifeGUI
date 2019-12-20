@@ -59,8 +59,10 @@ namespace GameLifeGUI
                         anotherCell.X = Width - Abs(anotherCell.X);
                     if (anotherCell.Y == -1 || anotherCell.Y == Height)
                         anotherCell.Y = Height - Abs(anotherCell.Y);
+                    if (nextGeneratironCells.Contains(anotherCell))
+                        continue;
                     CalculateCountNeightborsCell(cells, anotherCell);
-                    if (anotherCell.CountNeighbors == 3 && !nextGeneratironCells.Contains(anotherCell))
+                    if (anotherCell.CountNeighbors == 3)
                         nextGeneratironCells.Add(anotherCell);
                 }
             }
@@ -77,15 +79,14 @@ namespace GameLifeGUI
             Func<CellPoint, bool> onLRBorder = (x => Abs(cell.X - x.X) == Width - 1 && Abs(cell.Y - x.Y) <= 1);
             Func<CellPoint, bool> onTBBorder = (x => Abs(cell.X - x.X) <= 1 && Abs(cell.Y - x.Y) == Height - 1);
             Func<CellPoint, bool> onCorner = (x => Abs(cell.X - x.X) == Width - 1 && Abs(cell.Y - x.Y) == Height - 1);
+            Func<CellPoint, bool> onSelf = (x => cell.X == x.X && cell.Y == x.Y);
 
             if (cell.X == 0 || cell.X == Width - 1 || cell.Y == 0 || cell.Y == Height - 1)
-                cell.CountNeighbors = cells.Where(x => onCenter(x) || onLRBorder(x) || onTBBorder(x) || onCorner(x))
+                cell.CountNeighbors = cells.Where(x => !onSelf(x) && (onCenter(x) || onLRBorder(x) || onTBBorder(x) || onCorner(x)))
                                            .Count();
             else
-                cell.CountNeighbors = cells.Where(x => onCenter(x))
+                cell.CountNeighbors = cells.Where(x => !onSelf(x) && onCenter(x))
                                            .Count();
-            if (cells.Contains(cell))
-                --cell.CountNeighbors;
             return cell.CountNeighbors;
         }
 

@@ -21,6 +21,8 @@ namespace GameLifeGUI
         {
             figures = new Dictionary<string, CellPoint[]>();
             InitializeComponent();
+            groupAdd.Enabled = false;
+            btnAdd.Enabled = false;
             GetFiguresFromDirectory("figures");
         }
         public void DisplayFigures()
@@ -99,6 +101,14 @@ namespace GameLifeGUI
             var cells = figures[figure];
             Result = new AddFigureFormResult(x, y, cells, FieldWidth, FieldHeight);
         }
+        private bool txtInputHasNumber(TextBox txtBox)
+        {
+            var countDigits = txtBox.Text.Where(x => char.IsDigit(x)).Count();
+            var length = txtBox.Text.Length;
+            return length != 0 && countDigits == length;
+        }
+        private void txtInputXY_TextChanged(object sender, EventArgs e)
+            => btnAdd.Enabled = txtInputHasNumber(txtInputX) && txtInputHasNumber(txtInputY);
 
         private void DrawFigureSample(string figure)
         {
@@ -126,7 +136,10 @@ namespace GameLifeGUI
             {
                 var item = list.SelectedItem as string;
                 DrawFigureSample(item);
+                groupAdd.Enabled = true;
             }
+            else
+                groupAdd.Enabled = false;
         }
     }
 }
